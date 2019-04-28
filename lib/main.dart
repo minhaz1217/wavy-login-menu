@@ -17,21 +17,26 @@ class WavyHeader extends StatelessWidget {
     Color(0xFFFF9844),
     Color(0xFFFE8853),
     Color(0xFFFD7267),];
-  @override
-  Widget build(BuildContext context) {
+  BuildContext myContext;
+  Widget get wavyHeader{
     return ClipPath(
       clipper: TopWaveClipper(),
       child: Container(
-        height: MediaQuery.of(context).size.height/2.5,
+        height: MediaQuery.of(myContext).size.height/2.5,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: orangeGradients,
-              begin: Alignment.topRight,
-              end: Alignment.center,
+            colors: orangeGradients,
+            begin: Alignment.topRight,
+            end: Alignment.center,
           ),
         ),
       ),
     );
+  }
+  @override
+  Widget build(BuildContext context) {
+    myContext = context;
+    return wavyHeader;
 
   }
 }
